@@ -1,14 +1,23 @@
-class Vista:
-    print ("MENU DE CALCULAR VALOR H.E, R.N, H.E.D, H.E.D.N")
-    print("1.VALOR HORA EXTRADIURNA")
-    print("2.VALOR RECARGO NOCTURNO")
-    print("3.VALOR HORA EXTRA NOCTURNA")
-    print("4.VALOR HORA EXTRA DOMINICAL D")
-    print("5.VALOR HORA EXTRA DOMINICAL N")
+from Modelo import Model
+from Vista import Vista
+class View:
+    obj_Model= Model()
+    obj_view = Vista()
+    obj_Model.setHE(obj_view.HE)
+    obj_Model.setSB(obj_view.SB)
+    SB = float(obj_Model.getSB())
+    HE = float(obj_Model.getHE())
+    option = int(obj_view.option)
 
-    option=input()
+    if option == 1:
+        obj_Model.ED(SB, HE)
+    elif option == 2:
+         obj_Model.RN(SB, HE)
+    elif option == 3:
+         obj_Model.EN(SB, HE)
+    elif option == 4:
+         obj_Model.EDD(SB, HE)
+    elif option == 5:
+         obj_Model.EDN(SB, HE)
 
-    print("INGRESE SUELDO BASE")
-    SB=input()
-    print("INGRESE TOTAL DE HORAS EXTRAS")
-    HE=input()
+    print("EL VALOR DE LA HORA ES: ", obj_Model.getResult())   
